@@ -61,4 +61,54 @@ Public Class frmSyteLineDevTools
             oclient.CloseSession()
         End Try
     End Sub
+
+    Private Sub cboForm_DropDown(sender As Object, e As EventArgs) Handles cboForm.DropDown
+        Dim oclient = GetClient()
+
+        cboForm.Items.Clear()
+        Try
+            Cursor.Current = Cursors.WaitCursor
+            Dim formlist As New FormExtractor(oclient)
+            If cboScope.SelectedItem = "Vendor" Then
+                cboForm.Items.AddRange(formlist.GetFormList(Enums.ScopeTypes.SYMIX_DEFAULT, "", "").ToArray)
+            ElseIf cboScope.SelectedItem = "Site" Then
+                cboForm.Items.AddRange(formlist.GetFormList(Enums.ScopeTypes.SITE_DEFAULT, "", "").ToArray)
+            End If
+        Finally
+            Cursor.Current = Cursors.Default
+            oclient.CloseSession()
+        End Try
+
+    End Sub
+
+    Private Sub ExtractFormForScope(ByVal formName As String, ByVal scope As Enums.ScopeTypes)
+        Dim oclient = GetClient()
+
+        Try
+            Cursor.Current = Cursors.WaitCursor
+            Dim extractor As New FormExtractor(oclient)
+            Dim form = extractor.GetFormByScope(formName, scope, "", "")
+            ObjectPersister.PersistObject(txtOutputPath.Text, GlobalObjectType.Form, form.Name, form)
+
+        Finally
+            Cursor.Current = Cursors.Default
+            oclient.CloseSession()
+        End Try
+    End Sub
+
+
+    Private Sub btnExtractForm_Click(sender As Object, e As EventArgs) Handles btnExtractForm.Click
+        Try
+            If cboScope.SelectedItem = "Vendor" Then
+                ExtractFormForScope(cboForm.SelectedItem, Enums.ScopeTypes.SYMIX_DEFAULT)
+            ElseIf cboScope.SelectedItem = "Site" Then
+                ExtractFormForScope(cboForm.SelectedItem, Enums.ScopeTypes.SITE_DEFAULT)
+            Else
+                Throw New System.Exception("Scope must be entered.")
+            End If
+            MessageBox.Show("Form Extracted Successfully", STR_SLDevTools, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, STR_SLDevTools, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

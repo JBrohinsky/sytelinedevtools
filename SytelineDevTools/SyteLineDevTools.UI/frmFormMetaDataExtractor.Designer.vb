@@ -35,11 +35,15 @@ Partial Class frmSyteLineDevTools
         Me.txtServerSpec = New System.Windows.Forms.TextBox()
         Me.txtUser = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.SuspendLayout
+        Me.cboScope = New System.Windows.Forms.ComboBox()
+        Me.cboForm = New System.Windows.Forms.ComboBox()
+        Me.lblScopeForm = New System.Windows.Forms.Label()
+        Me.btnExtractForm = New System.Windows.Forms.Button()
+        Me.SuspendLayout()
         '
         'lblUser
         '
-        Me.lblUser.AutoSize = true
+        Me.lblUser.AutoSize = True
         Me.lblUser.Location = New System.Drawing.Point(41, 60)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(32, 13)
@@ -48,7 +52,7 @@ Partial Class frmSyteLineDevTools
         '
         'lblServer
         '
-        Me.lblServer.AutoSize = true
+        Me.lblServer.AutoSize = True
         Me.lblServer.Location = New System.Drawing.Point(32, 10)
         Me.lblServer.Name = "lblServer"
         Me.lblServer.Size = New System.Drawing.Size(41, 13)
@@ -57,7 +61,7 @@ Partial Class frmSyteLineDevTools
         '
         'lblPassword
         '
-        Me.lblPassword.AutoSize = true
+        Me.lblPassword.AutoSize = True
         Me.lblPassword.Location = New System.Drawing.Point(17, 85)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(56, 13)
@@ -66,7 +70,7 @@ Partial Class frmSyteLineDevTools
         '
         'lblConfig
         '
-        Me.lblConfig.AutoSize = true
+        Me.lblConfig.AutoSize = True
         Me.lblConfig.Location = New System.Drawing.Point(33, 110)
         Me.lblConfig.Name = "lblConfig"
         Me.lblConfig.Size = New System.Drawing.Size(40, 13)
@@ -75,7 +79,7 @@ Partial Class frmSyteLineDevTools
         '
         'lblOutputPath
         '
-        Me.lblOutputPath.AutoSize = true
+        Me.lblOutputPath.AutoSize = True
         Me.lblOutputPath.Location = New System.Drawing.Point(6, 35)
         Me.lblOutputPath.Name = "lblOutputPath"
         Me.lblOutputPath.Size = New System.Drawing.Size(67, 13)
@@ -89,7 +93,7 @@ Partial Class frmSyteLineDevTools
         Me.btnVendor.Size = New System.Drawing.Size(100, 23)
         Me.btnVendor.TabIndex = 10
         Me.btnVendor.Text = "Extract Vendor"
-        Me.btnVendor.UseVisualStyleBackColor = true
+        Me.btnVendor.UseVisualStyleBackColor = True
         '
         'btnNonVendor
         '
@@ -98,11 +102,11 @@ Partial Class frmSyteLineDevTools
         Me.btnNonVendor.Size = New System.Drawing.Size(100, 23)
         Me.btnNonVendor.TabIndex = 11
         Me.btnNonVendor.Text = "Extract Site"
-        Me.btnNonVendor.UseVisualStyleBackColor = true
+        Me.btnNonVendor.UseVisualStyleBackColor = True
         '
         'txtOutputPath
         '
-        Me.txtOutputPath.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "OutputPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtOutputPath.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "OutputPath", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtOutputPath.Location = New System.Drawing.Point(76, 32)
         Me.txtOutputPath.Name = "txtOutputPath"
         Me.txtOutputPath.Size = New System.Drawing.Size(364, 20)
@@ -111,7 +115,7 @@ Partial Class frmSyteLineDevTools
         '
         'txtConfig
         '
-        Me.txtConfig.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Config", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtConfig.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Config", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtConfig.Location = New System.Drawing.Point(77, 107)
         Me.txtConfig.Name = "txtConfig"
         Me.txtConfig.Size = New System.Drawing.Size(100, 20)
@@ -120,17 +124,17 @@ Partial Class frmSyteLineDevTools
         '
         'txtPassword
         '
-        Me.txtPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Password", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtPassword.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Password", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtPassword.Location = New System.Drawing.Point(77, 82)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(100, 20)
         Me.txtPassword.TabIndex = 5
         Me.txtPassword.Text = Global.SyteLineDevTools.UI.My.MySettings.Default.Password
-        Me.txtPassword.UseSystemPasswordChar = true
+        Me.txtPassword.UseSystemPasswordChar = True
         '
         'txtServerSpec
         '
-        Me.txtServerSpec.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Server", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtServerSpec.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "Server", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtServerSpec.Location = New System.Drawing.Point(76, 7)
         Me.txtServerSpec.Name = "txtServerSpec"
         Me.txtServerSpec.Size = New System.Drawing.Size(364, 20)
@@ -139,7 +143,7 @@ Partial Class frmSyteLineDevTools
         '
         'txtUser
         '
-        Me.txtUser.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "User", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtUser.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.SyteLineDevTools.UI.My.MySettings.Default, "User", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtUser.Location = New System.Drawing.Point(77, 57)
         Me.txtUser.Name = "txtUser"
         Me.txtUser.Size = New System.Drawing.Size(100, 20)
@@ -153,13 +157,52 @@ Partial Class frmSyteLineDevTools
         Me.Button1.Size = New System.Drawing.Size(100, 23)
         Me.Button1.TabIndex = 12
         Me.Button1.Text = "Push Site"
-        Me.Button1.UseVisualStyleBackColor = true
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'cboScope
+        '
+        Me.cboScope.FormattingEnabled = True
+        Me.cboScope.Items.AddRange(New Object() {"Vendor", "Site"})
+        Me.cboScope.Location = New System.Drawing.Point(76, 133)
+        Me.cboScope.Name = "cboScope"
+        Me.cboScope.Size = New System.Drawing.Size(101, 21)
+        Me.cboScope.TabIndex = 13
+        '
+        'cboForm
+        '
+        Me.cboForm.FormattingEnabled = True
+        Me.cboForm.Location = New System.Drawing.Point(184, 133)
+        Me.cboForm.Name = "cboForm"
+        Me.cboForm.Size = New System.Drawing.Size(256, 21)
+        Me.cboForm.TabIndex = 14
+        '
+        'lblScopeForm
+        '
+        Me.lblScopeForm.AutoSize = True
+        Me.lblScopeForm.Location = New System.Drawing.Point(1, 136)
+        Me.lblScopeForm.Name = "lblScopeForm"
+        Me.lblScopeForm.Size = New System.Drawing.Size(69, 13)
+        Me.lblScopeForm.TabIndex = 15
+        Me.lblScopeForm.Text = "Scope/Form:"
+        '
+        'btnExtractForm
+        '
+        Me.btnExtractForm.Location = New System.Drawing.Point(340, 166)
+        Me.btnExtractForm.Name = "btnExtractForm"
+        Me.btnExtractForm.Size = New System.Drawing.Size(100, 23)
+        Me.btnExtractForm.TabIndex = 16
+        Me.btnExtractForm.Text = "Extract Form"
+        Me.btnExtractForm.UseVisualStyleBackColor = True
         '
         'frmSyteLineDevTools
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(452, 321)
+        Me.Controls.Add(Me.btnExtractForm)
+        Me.Controls.Add(Me.lblScopeForm)
+        Me.Controls.Add(Me.cboForm)
+        Me.Controls.Add(Me.cboScope)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnNonVendor)
         Me.Controls.Add(Me.btnVendor)
@@ -194,4 +237,8 @@ End Sub
     Friend WithEvents btnVendor As Button
     Friend WithEvents btnNonVendor As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents cboScope As ComboBox
+    Friend WithEvents cboForm As ComboBox
+    Friend WithEvents lblScopeForm As Label
+    Friend WithEvents btnExtractForm As Button
 End Class
